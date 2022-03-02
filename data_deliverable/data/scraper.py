@@ -111,7 +111,7 @@ def add_article_data(conn, data):
     category = data['category']
     article_summary = preprocess(data['article_summary'])
     sub_category = data['sub_category']
-    article_text = preprocess(data['article_text'].lower())
+    article_text = preprocess(data['article_text'])
     web_url = data['web_url']
         
     command = ''' INSERT INTO nyt_articles(authors, headline, print_headline, pub_date, category, article_summary, sub_category, article_text, web_url)
