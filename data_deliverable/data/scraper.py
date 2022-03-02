@@ -4,6 +4,11 @@ import time
 from bs4 import BeautifulSoup
 import string
 from config import apikey
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+from nltk.stem import WordNetLemmatizer 
+
+
 
 def get_articles(apikey, section_name, page, begin_date):
     query = f'document_type:(\"article\") AND type_of_material:(\"News\") AND section_name:(\"{section_name}\")'
@@ -120,9 +125,23 @@ def add_article_data(conn, data):
     curr.execute(command, (authors, headline, print_headline, pub_date, category, article_summary, sub_category, article_text, web_url))
     conn.commit()
 
-# converts string to lowercase and remove punctuation
+# converts string to lowercase,remove punctuation, remove stop words
 def preprocess(text):
-    return text.lower().translate(str.maketrans('', '', string.punctuation))
+    # convert to lower case
+    s = text.lower()
+
+    # remove punctuation
+    s = s.translate(str.maketrans('', '', string.punctuation))
+
+    # remove stop words
+    s_tokens = word_tokenize(s)
+    tokens_without_sw = [word for word in s_tokens if not word in stopwords.words()]
+
+    # lemmatize list of words
+    lemmatizer = WordNetLemmatizer()
+    lemmatized_output = ' '.join([lemmatizer.lemmatize(word) for word in tokens_without_sw])
+
+    return lemmatized_output
 
 def main():
     num_of_pages =  10 # should be 200 articles
