@@ -2,6 +2,7 @@ import requests
 import sqlite3
 import time
 from bs4 import BeautifulSoup
+import string
 from config import apikey
 
 def get_articles(apikey, section_name, page, begin_date):
@@ -104,13 +105,13 @@ def create_tables(conn):
 def add_article_data(conn, data):
     curr = conn.cursor()
     authors = ', '.join(data['authors'])
-    headline = data['headline']
-    print_headline = data['print_headline']
+    headline = preprocess(data['headline'].lower())
+    print_headline = preprocess(data['print_headline'])
     pub_date = data['pub_date']
     category = data['category']
-    article_summary = data['article_summary']
+    article_summary = preprocess(data['article_summary'])
     sub_category = data['sub_category']
-    article_text = data['article_text']
+    article_text = preprocess(data['article_text'].lower())
     web_url = data['web_url']
         
     command = ''' INSERT INTO nyt_articles(authors, headline, print_headline, pub_date, category, article_summary, sub_category, article_text, web_url)
@@ -118,6 +119,10 @@ def add_article_data(conn, data):
 
     curr.execute(command, (authors, headline, print_headline, pub_date, category, article_summary, sub_category, article_text, web_url))
     conn.commit()
+
+# converts string to lowercase and remove punctuation
+def preprocess(text):
+    return text.lower().translate(str.maketrans('', '', string.punctuation))
 
 def main():
     num_of_pages =  10 # should be 200 articles
