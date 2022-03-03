@@ -1,6 +1,6 @@
 # :newspaper: Breaking News Data Spec
 
-Welcome to the Breaking News Data Spec! Some important things to note before diving into our wonderful datasets and their attributes. First, you should note that there are two data sets included in this spec: `SST-5 Fine-Grdained Classificaition` and `nyt_articles`. The `SST-5 Fine-Grdained Classificaition` data will be used to train our ML model to then later perform sentiment analyis on the `nyt_articles` data we collected. For more information please continue reading and we hope you enjoy!
+Welcome to the Breaking News Data Spec! Some important things to note before diving into our wonderful datasets and their attributes. First, you should note that there are two data sets included in this spec: `SST-5 Fine-Grdained Classificaition` and `nyt_articles` (currently called data.db). The `SST-5 Fine-Grdained Classificaition` data will be used to train our ML model to then later perform sentiment analyis on the `nyt_articles` data we collected. For more information please continue reading and we hope you enjoy!
 
 # SST-5 Fine-Grained Classification Dataset Spec 
 
