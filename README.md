@@ -1,5 +1,7 @@
-# Final Project
-This is the final project's master repo! Please use the following shortcut links to access the different components of the project.
+# :newspaper: BREAKING NEWS
+Breaking News or just catchy polarizing titles? Whether you read your news in traditional print, on the web, or even on your phone you are no stranger to the flashy and at times polarizing headlines polluting our media outlets! However, have you ever wondered how accurate these headlines represent the content of the article they accompany? If polarizing headlines are indicative of polarizing content or if they are just meant to draw in more readers?
+
+Through our project we hope to answer these questions using sentiment analysis of various news headlines and their accompanying article content. Along with this we hope to discover interesting aspects about how our daily news is marketed to us including things such as how polarizing new articles are in comparison to their content, whether or not semantic analysis varies across different news categories, and much more!
 
 ## Data Deliverable ##
 
