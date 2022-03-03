@@ -1,4 +1,4 @@
-# Breaking News Data Spec
+# :newspaper: Breaking News Data Spec
 
 Welcome to the Breaking News Data Spec! Some important things to note before diving into our wonderful datasets and their attributes. First, you should note that there are two data sets included in this spec: `SST-5 Fine-Grdained Classificaition` and `nyt_articles`. The `SST-5 Fine-Grdained Classificaition` data will be used to train our ML model to then later perform sentiment analyis on the `nyt_articles` data we collected. For more information please continue reading and we hope you enjoy!
 
@@ -51,8 +51,8 @@ Attributes for our data where extracted from the response object returned by que
 **NYT Article Search API:**
 https://developer.nytimes.com/docs/articlesearch-product/1/overview
 
-**NYT Article Search API JSON Response:**
-----
+### NYT Article Search API JSON Response:
+
 The following demonstrates the JSON response object for the feilds we decided to extract. For the full schema of the response object returned by NYT Article Search API refer to this [Link](https://developer.nytimes.com/docs/articlesearch-product/1/routes/articlesearch.json/get)
 ```json=
 response: {
