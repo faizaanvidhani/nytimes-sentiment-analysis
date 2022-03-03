@@ -9,17 +9,30 @@ _For quick grading:_
 # SST-5 Fine-Grained Classification Dataset Spec 
 
 ### Creating the Model: 
-For our project we will be training a model to conduct sentiment analysis using the SST-5 Fine-grained classification dataset. The dataset turns the typical sentiment analysis from what is typically a binary classification problem into a multi-class classification problem by introducing integer labels ranging from 0 - 4 (inclusive), detailing a Strongly Negative, Weakly Negative, Neutral, Weakly Positive, and Strongly Positive sentiments respectively. The labels are attributed to 11,855 sentences extracted from movie reviews. If we choose to, we can also leverage the 215,154 phrases that comprise the sentences in the reviews in order to conduct an even finer grained analysis. Further information is provided in the 
-Attributes for our data where extracted SST-5 Fine-Grained Classification Dataset. 
+For our project, we will be training a model to conduct sentiment analysis using the SST-5 Fine-grained classification dataset. The dataset turns the typical sentiment analysis from what is typically a binary classification problem into a multi-class classification problem by introducing integer labels ranging from 0 - 4 (inclusive), corresponding to Strongly Negative, Weakly Negative, Neutral, Weakly Positive, and Strongly Positive sentiments, respectively (see table below).
+
+**Table 1: Multi-class Classification of Integer Labels and Corresponding Sentiments**
+| Integer Labels   | Sentiments         |  
+| -------------    |:-------------:     |
+| 0                | Strongly Negative  |
+| 1                | Weakly Negative    |
+| 2                | Neutral            |
+| 3                | Weakly Positive    |
+| 4                | Strongly Positive  |
+
+The labels are attributed to 11,855 sentences extracted from movie reviews. We can also choose to leverage the 215,154 phrases that comprise the sentences in the reviews in order to conduct an even finer grained analysis. 
+
+### Conducting Analysis: 
+
+After training the model and achieving a high test set accuracy (goal test accuracy = 85%), we plan to use the model to perform sentiment analysis on our second dataset. By doing so, we will be able to obtain the sentiment of the article headlines and their corresponding text content. To test our hypotheses, we will use these sentiment ratings and form our conclusions appropriately. 
 
 **Links to Data:**
 
-[Treeset Download Link](https://nlp.stanford.edu/sentiment/index.html)
+* [Treeset Download Link](https://nlp.stanford.edu/sentiment/index.html)
 
-[Raw Text Link](https://drive.google.com/drive/folders/1TYR-yRw3NXqfXnMSvFDxGTdf1urGfrPY)
+* [Raw Text Link](https://drive.google.com/drive/folders/1TYR-yRw3NXqfXnMSvFDxGTdf1urGfrPY)
 
-[Sample Data Link](https://docs.google.com/spreadsheets/d/1mu5RmXbWU3va15VOGFOvOljR2aPsFQwDX5G4TKLzG04/edit#gid=0)
-
+* [Sample Data Link](https://docs.google.com/spreadsheets/d/1mu5RmXbWU3va15VOGFOvOljR2aPsFQwDX5G4TKLzG04/edit#gid=0)
 
 ### Data Attributes: 
 **`rating:`** Numerical rating of the movie review's sentiment.
@@ -28,7 +41,7 @@ Attributes for our data where extracted SST-5 Fine-Grained Classification Datase
 | -------------    |:-------------:     |
 | Type             | `Integer`          |
 | Range            | 0 - 4  (inclusive) |
-| Required         | :heavy_check_mark: |
+| Required         | :white_check_mark: |
 
 Distribution of Ratings in Test Set 
 (should be representative of entire dataset)
@@ -45,7 +58,7 @@ Distribution of Ratings in Test Set
 | Values           |                    |  
 | -------------    |:-------------:     |
 | Type             | `String`           |
-| Required         | :heavy_check_mark: |
+| Required         | :white_check_mark: |
 
 
 # nyt_articles Data Set:
