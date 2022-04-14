@@ -4,7 +4,7 @@ import sqlite3
 import time
 from bs4 import BeautifulSoup
 import string
-from config import apikey
+from config import apikey, headers
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
@@ -15,7 +15,6 @@ def get_articles(apikey, section_name, page, date):
     begin_date = date[0]
     end_date = date[1]
     query = f'document_type:(\"article\") AND type_of_material:(\"News\") AND section_name:(\"{section_name}\")'
-    begin_date = begin_date  # YYYYMMDD
     page = str(page)  # <0-100>
     sort = "relevance" # newest, oldest
     query_url = f"https://api.nytimes.com/svc/search/v2/articlesearch.json?" \
@@ -25,6 +24,7 @@ def get_articles(apikey, section_name, page, date):
                 f"&end_date={end_date}" \
                 f"&page={page}" \
                 f"&sort={sort}"
+
     time.sleep(6) 
 
     # Query NYT API
@@ -78,14 +78,14 @@ def extract_authors(author_data):
     return authors
 
 def get_text(web_url):
-    req = requests.get(web_url)
+    req = requests.get(web_url, headers=headers)
     req.raise_for_status() # Raises an error if the request fails
     bs = BeautifulSoup(req.content, 'html.parser')
-    paragraphs = bs.find_all("p", {"class":"css-axufdj evys1bk0"})
+    paragraphs = bs.find_all("p", {"class":"css-g5piaz evys1bk0"})
 
     full_text = ''
     for p in paragraphs:
-        full_text = full_text + p.text
+        full_text = full_text + ' ' + p.text
 
     return full_text
 
@@ -159,7 +159,7 @@ def preprocess(text):
 
     # remove punctuation
     s = s.translate(str.maketrans('', '', string.punctuation))
-
+    
     # remove stop words
     s_tokens = word_tokenize(s)
     tokens_without_sw = [word for word in s_tokens if not word in stopwords.words()]
@@ -212,15 +212,20 @@ def main():
     ]
     
     pages_per_category_per_year = get_num_pages(dates)
+    print(pages_per_category_per_year)
     articles = []
+   
 
-    for date in dates:
+    for idx, date in enumerate(dates):
         print(f"Getting Data for {date}")
         for category in pages_per_category_per_year: 
             print(f"Getting Data for {category}")
-            num_pages = pages_per_category_per_year[category]
-            for num_page in num_pages:
-                articles += get_articles(apikey, category, num_page, date)
+            num_pages = pages_per_category_per_year[category][idx]
+            print(f"Number of Pages: {num_pages}")
+            # for page in range(num_pages):
+            for page in range(num_pages):
+                print(f"Page: {page}")
+                articles += get_articles(apikey, category, page, date)
                
     conn = sqlite3.connect('data.db')
     create_tables(conn)
