@@ -58,15 +58,18 @@ def hypothesis_test_two(df):
 def hypothesis_test_three(df):
     """
     Hypothesis Test #3
-        -Is the difference in sentiment scores for headlines and their corresponding articles the same across all authors?
+        -Is the mean difference in sentiment scores for headlines and their corresponding articles for a given author the 
+        same across all authors?
 
     H0:
-        -The difference in sentiment scores for a particular headline and its corresponding article is the same across all authors. 
+        -The mean difference in sentiment scores for headlines and their corresponding articles for a given author is the 
+        same across all authors. 
         -Mathematically, u1 = u2 =...= uj  where j is the number of authors.
     Ha
-        -The difference in sentiment scores for a particular headline and its corresponding article is not the same for all authors.
+        -The mean difference in sentiment scores for headlines and their corresponding articles for a given author is not 
+        the same for all authors. 
         -Mathematically, ui != uk for at least one pair of i, k {1,2,...,j}, i != k.
-    Type of Test: ANOVA
+    Type of Test: One-way ANOVA Test
 
     Input:
         - dataset: A Pandas DataFrame
