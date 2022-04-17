@@ -90,10 +90,11 @@ def hypothesis_test_three(df):
     _, lev_p = levene(*diff_lists)
     if lev_p < 0.05:
         print("Homogeneity of variances condition is NOT met. Cannot proceed with one-way ANOVA.")
+        return None, None
     else:
         print("Homogeneity of variances condition is met! Proceeding with one-way ANOVA.")
     F, p = f_oneway(*diff_lists)
-    return lev_p, F, p
+    return F, p
 
 if __name__ == "__main__":
     df = pd.read_csv('updated_nyt_data.csv')
@@ -110,5 +111,5 @@ if __name__ == "__main__":
 
     # HYPOTHESIS TEST #3
     print("Running Hypothesis Test #3...")
-    lev_p, F, p = hypothesis_test_three(df)
+    F, p = hypothesis_test_three(df)
     print("Hypothesis Test #3 Results - F-value: " + str(F) + ", pvalue: " + str(p))
