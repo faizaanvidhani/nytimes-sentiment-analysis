@@ -30,15 +30,15 @@ def hypothesis_test_one(df):
 def hypothesis_test_two(df):
     """
     Hypothesis Test #2
-        -Are the sentiment scores of arts headlines significantly different from the sentiment scores of technology headlines?
+        -Are the sentiment scores of arts headlines significantly greater than the sentiment scores of technology headlines?
 
     H0:
         -The mean sentiment score of arts headlines is equal to the mean sentiment score of technology headlines. 
         -Mathematically, uA = uT . 
     Ha:
-        -The mean sentiment score of arts headlines is significantly different from the mean sentiment score of technology headlines. 
-        -Mathematically, uA != uT .
-    Type of Test: Two-tailed Two-sample t-test
+        -The mean sentiment score of arts headlines is significantly greater than the mean sentiment score of technology headlines. 
+        -Mathematically, uA > uT .
+    Type of Test: One-tailed two-sample t-test
 
     Input:
         - dataset: A Pandas DataFrame
@@ -51,7 +51,7 @@ def hypothesis_test_two(df):
 
     arts_headline_ratings = arts["headline_ratings"]
     tech_headline_ratings = tech["headline_ratings"]
-    tstats, pvalue = ttest_ind(arts_headline_ratings, tech_headline_ratings)
+    tstats, pvalue = ttest_ind(arts_headline_ratings, tech_headline_ratings, alternative='greater')
     return tstats, pvalue
 
 
