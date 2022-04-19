@@ -11,35 +11,40 @@ a_score = 'text_ratings'
 
 #H1: Is there a significant difference between the sentiment scores of a headline and its corresponding article?
 def sentiment_score_histogram(data):
- 
-    df0 = data.groupby("category")
-    print(df0)
-    df = data.groupby('category', as_index=False)['headline_ratings'].mean()
-    df = df.rename(columns={"headline_ratings": "mean"})
-    df['text_type'] = 'headline'
 
-    df2 = data.groupby('category', as_index=False)['text_ratings'].mean()
-    df2 = df.rename(columns={"text_ratings": "mean"})
-    df2['text_type'] = 'article'
+    df_headline = data[['category', 'headline_ratings']]
+    df_headline = df_headline.groupby('category', as_index=False)['headline_ratings'].mean()
+    df_headline['Text Type'] = 'headline'
+    df_headline = df_headline.rename(columns={"headline_ratings": "mean"})
 
-    result = pd.concat([df, df2])
+    df_text = data[['category', 'text_ratings']]
+    df_text = df_text.groupby('category', as_index=False)['text_ratings'].mean()
+    df_text['Text Type'] = 'article'
+    df_text = df_text.rename(columns={"text_ratings": "mean"})
+
+    result = pd.concat([df_headline, df_text])
     fig, axs = plt.subplots()
-    fig.set_size_inches(10, 6)
+    fig.set_size_inches(10, 12)
     fig.tight_layout()
+    fig.subplots_adjust(top=.9)
+    fig.subplots_adjust(bottom=.1)
 
     graph = sns.catplot(
         data=result, 
         kind="bar",
         x="category", 
         y="mean", 
-        hue="text_type", 
+        hue="Text Type", 
         palette="dark", 
         alpha=.6, 
         height=6
     )
+
+    graph.set_axis_labels("Article Category", "Mean Sentiment Score")
+    graph.set(title = "Mean Sentiment Scores by Categories for Articles and Headlines")
+    graph.fig.subplots_adjust(top=.9)
     plt.ylim(0, 3)
     plt.show()
-
 
 def plot_sentiment_box():
     '''
@@ -116,6 +121,6 @@ def plot_author_line():
   
 if __name__ == "__main__":
     data = df = pd.read_csv("../updated_nyt_data.csv")
-    sentiment_score_histogram(data)
-    # h2_box_plot(data)
-    # plot_category_bar('Arts', 'Technology', data)
+    # sentiment_score_histogram(data)
+    h2_box_plot(data)
+    plot_category_bar('Arts', 'Technology', data)
