@@ -1,2 +1,2 @@
 # Poster
-This is where your final project poster will go.
+![](https://i.imgur.com/VQZMdYn.png)
