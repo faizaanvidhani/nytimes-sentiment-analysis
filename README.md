@@ -25,18 +25,16 @@ Through our project we hope to answer these questions using sentiment analysis o
 ## Final Deliverable ##
 
 - ### Poster ###
-[Poster](final_deliverable/poster/poster.pdf)
+  - [Poster](./final_deliverable/poster/poster.pdf)
 
 - ### Code ###
-  - [Code](final_deliverable/code/)<br/>
-  - ([Capstone App Demo]()
+  - [Code](final_deliverable/code/)
 
 - ### Abstract ###
-  - [Abstract]()
+  - [Abstract](./final_deliverable/Breaking%20News%20Abstract.pdf)
 
 - ### Final Presentation ###
-  - [recording]()
-  - [slides]()
+  - [recording]ttps://drive.google.com/file/d/1DkFbjzCAYfG211_YFxTL4q4ESBk_z9wy/view?usp=sharing()
 
 - ### Visualizations ###
-  - [Visualizations](final_deliverable/visualizations)
+  - [Visualizations](./final_deliverable//visualizations)
