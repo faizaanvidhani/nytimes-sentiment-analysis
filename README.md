@@ -34,7 +34,7 @@ Through our project we hope to answer these questions using sentiment analysis o
   - [Abstract](./final_deliverable/Breaking%20News%20Abstract.pdf)
 
 - ### Final Presentation ###
-  - [recording]ttps://drive.google.com/file/d/1DkFbjzCAYfG211_YFxTL4q4ESBk_z9wy/view?usp=sharing()
+  - [recording](https://drive.google.com/file/d/1DkFbjzCAYfG211_YFxTL4q4ESBk_z9wy/view?usp=sharing)
 
 - ### Visualizations ###
   - [Visualizations](./final_deliverable//visualizations)
