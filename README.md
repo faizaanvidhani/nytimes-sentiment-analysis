@@ -10,7 +10,7 @@ Through our project we hope to answer these questions using sentiment analysis o
 
 - #### Reports ####
   - [Tech Report](data_deliverable/reports/tech_report/)
-  - [Socio-historical Context and Impact Report](data_deliverable/reports/social_impact_report)
+  - [Socio-historical Context and Impact Report](./final_deliverable/social_impact_report/README.md)
 
 
 ## Analysis Deliverable ##
