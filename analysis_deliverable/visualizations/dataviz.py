@@ -1,4 +1,3 @@
-
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -15,20 +14,16 @@ def sentiment_score_histogram(data):
 
     df_headline = data[['category', 'headline_ratings']]
     df_headline = df_headline.groupby('category', as_index=False)['headline_ratings'].mean()
-    df_headline['Text Type'] = 'headline'
+    print(df_headline)
+    df_headline['Text Type'] = 'Headline'
     df_headline = df_headline.rename(columns={"headline_ratings": "mean"})
 
     df_text = data[['category', 'text_ratings']]
     df_text = df_text.groupby('category', as_index=False)['text_ratings'].mean()
-    df_text['Text Type'] = 'article'
+    df_text['Text Type'] = 'Article'
     df_text = df_text.rename(columns={"text_ratings": "mean"})
 
     result = pd.concat([df_headline, df_text])
-    fig, axs = plt.subplots()
-    fig.set_size_inches(10, 12)
-    fig.tight_layout()
-    fig.subplots_adjust(top=.9)
-    fig.subplots_adjust(bottom=.1)
 
     graph = sns.catplot(
         data=result, 
@@ -41,19 +36,12 @@ def sentiment_score_histogram(data):
         height=6
     )
 
-    graph.set_axis_labels("Article Category", "Mean Sentiment Score")
-    graph.set(title = "Mean Sentiment Scores by Categories for Articles and Headlines")
+    graph.set_axis_labels("News Category", "Mean Sentiment Score")
+    graph.set(title = "Mean Sentiment Scores by Category for Articles and Headlines")
     graph.fig.subplots_adjust(top=.9)
+    
     plt.ylim(0, 3)
     plt.show()
-
-def plot_sentiment_box():
-    '''
-    Plots a histogram displaying differences between sentiment scores
-    '''
-    pass
-
-
 
 
 # H2: Are the sentiment scores of arts headlines significantly different from the sentiment scores of technology headlines?
@@ -66,15 +54,24 @@ def plot_category_bar(a, b, data):
     - data: The data used to make the visualization
     """
 
+    # Getting data for article categories of interest
     df = data.loc[(data["category"]== a) | (data["category"]== b) ] 
-    df = df.groupby([h_score, 'category'], as_index=False).size()
 
+    # Grouping Data by Headline Ratings and Category
+    df = df.groupby(["headline_ratings", 'category'], as_index=False).size()
+
+    # Converting Numerical Sentiment Score to Category Value
+    sentiment_score_mapping = {
+        0: "Strongly Negative",
+        1: "Weakly Negative",
+        2: "Neutral",
+        3: "Weakly Positive",
+        4: "Strongly Positive"
+    }
+
+    df = df.replace({"headline_ratings": sentiment_score_mapping})
     df = df.rename(columns={"category": "Article Category"})
     
-    fig, axs = plt.subplots()
-    fig.set_size_inches(10, 6)
-    fig.tight_layout()
-
     graph = sns.catplot(
         data=df, 
         kind="bar",
@@ -87,36 +84,51 @@ def plot_category_bar(a, b, data):
     )
 
     graph.despine(left=True)
-    graph.set_axis_labels("Sentiment Score", "Number of Articles")
-    graph.set(title = "Sentiment Scores for News Headlines in Arts and Technology")
+    graph.set_axis_labels("Article Sentiment", "Number of Articles")
+    graph.set(title = "Art Articles vs Technology Articles Sentiment Analysis")
     plt.subplots_adjust(top=0.9)
     plt.show()
 
 def h2_box_plot(data):
 
-    art_articles = data.loc[(data["category"] == 'Arts')]
-    tech_articles = data.loc[(data["category"] == 'Technology')]
+    df = data[["category", "headline_ratings"]]
+    business_articles = df.loc[(data["category"] == 'Business Day')]
+    tech_articles = df.loc[(data["category"] == 'Technology')]
+    science_articles = df.loc[(data["category"] == 'Science')]
+    education_articles = df.loc[(data["category"] == 'Education')]
+    art_articles = df.loc[(data["category"] == 'Arts')]
+    health_articles = df.loc[(data["category"] == 'Health')]
+    opinion_articles = df.loc[(data["category"] == 'Opinion')]
+
+    data_dict = {
+        "Business" : business_articles['headline_ratings'],
+        "Technology": tech_articles['headline_ratings'],
+        "Science" : science_articles['headline_ratings'],
+        "Education" : education_articles['headline_ratings'],
+        "Art" : art_articles['headline_ratings'],
+        "Health" : health_articles['headline_ratings'],
+        "Opinion" : opinion_articles['headline_ratings']
+    }
     
-    fig, axs = plt.subplots(ncols=2)
+    fig, ax1 = plt.subplots(figsize=(9, 4))
     fig.tight_layout()
     fig.set_size_inches(9, 5)
-    fig.suptitle('Distribution of Sentiment Scores for Art and Technology Articles', fontweight='bold')
+    fig.suptitle('Distribution of Headline Sentiment Scores by Article Category')
     fig.subplots_adjust(top=.9)
     fig.subplots_adjust(bottom=.1)
     
-    sns.boxplot(y=art_articles['headline_ratings'], color='#377eb8', ax=axs[0])
-    sns.boxplot(y=tech_articles['headline_ratings'], color='#ff7f00', ax=axs[1])
-    # graph1 = sns.histplot(data=art_articles, x="headline_ratings", color='#377eb8', ax=axs[0])
-    # graph2 = sns.histplot(data=tech_articles, x="headline_ratings", color='#ff7f00', ax=axs[1])
+    bplot = ax1.boxplot(data_dict.values(), vert=True, patch_artist=True, labels=data_dict.keys())
 
+    colors = ['#227C9D', '#17C3B2', '#FFCB77', '#FEF9EF', '#FE6D73', '#CBB3BF', '#EF959C']
+    
+    for patch, color in zip(bplot['boxes'], colors):
+        patch.set_facecolor(color)
+
+    ax1.set_xlabel("News Category")
+    ax1.set_ylabel("Headline Sentiment Score")
+   
     plt.show()
 
-# # H3: Is the mean difference in sentiment scores for headlines and their corresponding articles for a given author the same across all authors?
-def plot_author_line():
-    '''
-    Plots a line graph containing the headline and article sentiment scores across authors, in addition to line graph displaying mean difference
-    '''
-    pass
 
 def get_value_counts_table(df, col_name):
     # get counts
