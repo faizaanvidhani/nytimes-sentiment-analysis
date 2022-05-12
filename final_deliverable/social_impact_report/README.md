@@ -1,33 +1,31 @@
-# Socio-historical Context and Impact Report
+# Socio-Historical Context & Ethical Considerations
 
-## Socio-historical Context
-
-### Who are the major stakeholders?
-
-
-### Societal factors affecting our data and prediction
-
-#### What should we do?
+### Socio-Historical Context:
+During the onset and conceptualization of this project we recognized that socio-historical context would play a significant role in our data and results for the simple reason that the underlying utility of news articles is to report and inform readers about socio-historical events. As a matter of fact, this direct relationship between our data and socio-historical context is one of the driving factors and motivations for our project. Among one of the biggest considerations we had to take into account was how the recent socio-political climate from 2018-2022 would affect the sentiment scores of headlines. Could events such as the Ukraine-Russia conflict reflect more negative sentiment in our data? How would Covid and online/remote learning influence sentiments in education articles? Would the political election of 2020 lead to more polarizing headlines to attract readers? And could social movements like Black Lives Matter and #MeToo influence or skew our data in unexpected ways? Although we weren’t able to address these questions directly in our project, we made sure to acknowledge and consider their potential influence when analyzing our results. Another important consideration we made was paying attention to our project stakeholder(s). Given that the New York Times is a liberal newspaper, is it possible that its political articles were biased towards having more negative sentiments during the Trump administration? Similarly, given that the target audience of the New York Times is mostly left leaning could this imply that the sentiments of article headlines are biased to align with the political opinions of its readers? 
+ 
+In addition to the considerations above, we read through academic papers with similar interests/research goals to see what potential socio-historical impacts our research could have. One paper that stood out to us was Sentiment Correlation in Financial News Networks and Associated Market Movements published by Wan and colleagues. In this paper, the authors found that there was a “…statistically significant association between strong media sentiment and abnormal market returns”. The societal impact of this paper shows that sentiment analysis of article publications can be used for predicting changes in financial markets. This paper shows how research similar to our project can have a direct impact on external factors and have useful applications for potential stakeholders. Overall, we recognize that our research and findings are influenced by socio-historical contexts meaning that given different data the potential for different conclusions and interpretations could be subject to exist. Even with all of this under consideration, we believe our project serves the purpose of addressing our research goals and provides a valuable analysis regarding the relationship of news headlines and article content. 
 
 
-### Relevant work
+## Ethical Considerations:
+Throughout our project we tried to minimize potential biases by scraping and using New York Times articles from a variety of different categories spanning a period of about five years. However, we acknowledge that there is still potential for underlying historical and societal biases in the data we collected. An important consideration to keep in mind is that we are analyzing opinion-based articles. This means that biases and opinions held by the authors are subject to be included and reflected in our data. Although there is no way to mitigate this bias on an article-by-article basis, a potential extension to our project could be to collect news articles from multiple media outlets to generate a more diverse and inclusive dataset. Similarly, during the collection, interpretation, and analysis of our data we tried to be as objective as possible. However, this is not to say that throughout the data lifecycle we couldn’t have potentially introduced bias. For instance, looking back at our data collection methods we realized we focused our analysis primarily on technical article categories such as science, technology, and business and placed less emphasis on non-technical article categories such as art. A potential reason for this disparity in article category variety could be our own unconscious or implicit bias as researchers who tend to focus and be more interested in technical topics.
+
+On a separate note, it is important that we comment on potential misinterpretations of our data and results. For instance, we foresee assumptions/conclusions of our findings being extended beyond our dataset. An example of this includes interpreters of our data making generalizations that our results apply to other news articles or datasets. The assumption that our findings extend beyond the context of our data would be an inaccurate assumption to make. To prevent these misinterpretations, we hope sections of our project including our socio-historical context report emphasize the dependency and relationship our findings have to the context under which our data was collected. The final ethical consideration we wish to address deals with the intended use of the data provided by the New York Times developer API. Although we don’t believe the New York Times intended their article API to be used for research purposes such as this project, we believe that we are still within the ethical boundaries to use this data for our project. For instance, we made sure to abide by all the API guidelines when collecting our data (including adding  time intervals between GET requests to prevent server overloads by our scraper) and are not distributing content published and owned by the New York Times as our own intellectual property. Despite our unique usage of the data we believe we conducted our research within the ethical boundaries required by us as student researchers.
 
 
-## Ethical Considerations
+## Works Cited:
 
-### Biases in data collection
+Murphy, Nicole. “Types of Bias.” CPD Online College, 10 Nov. 2021, cpdonline.co.uk/knowledge-base/safeguarding/types-of-bias/.
+
+“Ten Most Significant World Events in 2018.” Council on Foreign Relations, 2018, www.cfr.org/blog/ten-most-significant-world-events-2018.
+
+“Ten Most Significant World Events in 2019.” Council on Foreign Relations, 2019, www.cfr.org/blog/ten-most-significant-world-events-2019.
+
+“Ten Most Significant World Events in 2020.” Council on Foreign Relations, www.cfr.org/blog/ten-most-significant-world-events-2020.
+
+“Ten Most Significant World Events in 2021.” Council on Foreign Relations, www.cfr.org/blog/ten-most-significant-world-events-2021.
+
+Wan, Xingchen, et al. “Sentiment Correlation in Financial News Networks and Associated Market Movements.” Scientific Reports, vol. 11, no. 1, 4 Feb. 2021, p. 3062, www.nature.com/articles/s41598-021-82338-6, 10.1038/s41598-021-82338-6.
+‌
 
 
-
-### Biases in data interpretation
-
-
-
-### Privacy issues and solutions
-
-
-### Misuses of our project results
-
-
-## Works Cited
-
+‌

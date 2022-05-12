@@ -1,21 +1,16 @@
-# Final Deliverable
-This is the final deliverable's master directory! Please use the following shortcut links to access the different components of this deliverable.
+# :newspaper: Final Deliverable
 
 ### Poster ###
-[Poster]()
+[Poster](./poster/poster.pdf)
 
 ### Code ###
-[Code](code/)<br/>
-([Capstone App Demo]())
+[Code](code/)
 
 ### Abstract ###
-[Abstract](https://github.com/CS1951A-S21-Brown/PALs/blob/main/final_deliverable/)
+[Abstract](https://docs.google.com/document/d/1Dpte8fTnUoDu0DTYOJQqODi2OvchqBGdJX6xdLIDjoE/edit?usp=sharing)
 
 ### Final Presentation ###
-- [recording]()
-- [slides](https://github.com/CS1951A-S21-Brown/PALs/blob/main/final_deliverable/)
+- [recording](https://drive.google.com/file/d/1DkFbjzCAYfG211_YFxTL4q4ESBk_z9wy/view?usp=sharing)
 
 ### Visualizations ###
-_You can edit this README to refer to your own visualizations once you upload them_
-
-[Visualizations](visualizations)
+[Visualizations](./visualizations/)
